@@ -1,0 +1,68 @@
+[
+  {
+    "id": "ritmo-libre",
+    "name": "Academia Ritmo Libre",
+    "city": "Ciudad de Mexico",
+    "contact": {
+      "phone": "+52 55 1234 5678",
+      "email": "hola@ritmolibre.com"
+    },
+    "schedule": [
+      "Lunes y miercoles: Salsa principiantes 7:00 PM",
+      "Martes y jueves: Bachata intermedio 8:00 PM",
+      "Sabado: K-pop teens 11:00 AM"
+    ],
+    "prices": [
+      "Clase muestra: $150 MXN",
+      "Mensualidad 2 dias por semana: $900 MXN",
+      "Mensualidad ilimitada: $1,400 MXN"
+    ],
+    "faq": [
+      {
+        "question": "Necesito pareja para inscribirme",
+        "answer": "No, puedes inscribirte sin pareja."
+      },
+      {
+        "question": "Hay clases para principiantes",
+        "answer": "Si, hay grupos de nivel principiante para salsa y bachata."
+      }
+    ],
+    "notes": [
+      "Especialidad en ritmos latinos.",
+      "La primera visita incluye recorrido por las instalaciones."
+    ]
+  },
+  {
+    "id": "urban-beat",
+    "name": "Urban Beat Studio",
+    "city": "Guadalajara",
+    "contact": {
+      "phone": "+52 33 9876 5432",
+      "email": "info@urbanbeat.mx"
+    },
+    "schedule": [
+      "Lunes: Hip hop kids 5:00 PM",
+      "Miercoles: Jazz funk 7:30 PM",
+      "Viernes: Reggaeton open class 8:00 PM"
+    ],
+    "prices": [
+      "Inscripcion anual: $500 MXN",
+      "4 clases al mes: $700 MXN",
+      "8 clases al mes: $1,200 MXN"
+    ],
+    "faq": [
+      {
+        "question": "Aceptan principiantes",
+        "answer": "Si, hay grupos introductorios y open class para nuevos alumnos."
+      },
+      {
+        "question": "Hay clases para ninos",
+        "answer": "Si, contamos con hip hop kids."
+      }
+    ],
+    "notes": [
+      "Enfoque en estilos urbanos.",
+      "Se recomienda ropa comoda y tenis limpios para estudio."
+    ]
+  }
+]

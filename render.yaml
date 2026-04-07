@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: dance-academy-chatbot
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: OPENAI_MODEL
+        value: gpt-4.1-mini
+      - key: OPENAI_TIMEOUT_MS
+        value: 20000
+      - key: REQUEST_BODY_LIMIT
+        value: 100kb
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://tu-app-lovable.com,https://tu-dominio.com
+      - key: OPENAI_API_KEY
+        sync: false
