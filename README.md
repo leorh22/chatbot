@@ -120,6 +120,7 @@ Variables importantes:
 - `OPENAI_TIMEOUT_MS`: opcional
 - `REQUEST_BODY_LIMIT`: opcional
 - `CORS_ALLOWED_ORIGINS`: dominios permitidos para consumir la API, separados por coma
+- `LOG_CHAT_REQUESTS`: si esta en `true`, imprime en consola las llamadas al endpoint de chat
 
 Pasos sugeridos:
 

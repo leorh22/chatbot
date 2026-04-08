@@ -18,5 +18,7 @@ services:
         value: 100kb
       - key: CORS_ALLOWED_ORIGINS
         value: https://blendance-business.lovable.app,https://id-preview--35786f41-2a06-40f9-911d-f60ee4f706fd.lovable.app,https://business.blendance.app
+      - key: LOG_CHAT_REQUESTS
+        value: true
       - key: OPENAI_API_KEY
         sync: false

@@ -1,6 +1,17 @@
 import { listAcademies } from "../data/academyRepository.js";
+import { config } from "../config.js";
 import { chatWithAcademy, normalizeMessages } from "../services/chatService.js";
 import { ChatbotTimeoutError } from "../services/openaiService.js";
+
+function buildLogMessagePreview(messages) {
+  const lastUserMessage = [...messages].reverse().find((message) => message.role === "user");
+
+  if (!lastUserMessage) {
+    return "(sin mensaje de usuario)";
+  }
+
+  return lastUserMessage.content.slice(0, 200);
+}
 
 export async function healthController(_req, res) {
   res.json({
@@ -22,9 +33,17 @@ export async function academiesController(_req, res) {
 }
 
 export async function chatController(req, res) {
+  const requestStartedAt = Date.now();
+
   try {
     const { academyId } = req.body ?? {};
     const messages = normalizeMessages(req.body ?? {});
+
+    if (config.logChatRequests) {
+      console.log(
+        `[chat:incoming] academyId=${academyId ?? "missing"} ip=${req.ip} message="${buildLogMessagePreview(messages)}"`
+      );
+    }
 
     if (!academyId || typeof academyId !== "string") {
       return res.status(400).json({
@@ -43,6 +62,12 @@ export async function chatController(req, res) {
       messages
     });
 
+    if (config.logChatRequests) {
+      console.log(
+        `[chat:success] academyId=${response.academyId} durationMs=${Date.now() - requestStartedAt}`
+      );
+    }
+
     return res.json({
       academyId: response.academyId,
       academyName: response.academyName,
@@ -59,6 +84,14 @@ export async function chatController(req, res) {
     if (error instanceof ChatbotTimeoutError) {
       statusCode = 504;
       errorMessage = "El chatbot tardo demasiado en responder.";
+    }
+
+    if (config.logChatRequests) {
+      console.log(
+        `[chat:error] academyId=${req.body?.academyId ?? "missing"} durationMs=${Date.now() - requestStartedAt} detail="${
+          error instanceof Error ? error.message : "Error desconocido"
+        }"`
+      );
     }
 
     return res.status(statusCode).json({
