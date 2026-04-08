@@ -11,10 +11,35 @@ async function loadAcademies() {
   return JSON.parse(raw);
 }
 
-export async function getAcademyById(academyId) {
+function normalizeIdentifier(value) {
+  return String(value ?? "")
+    .trim()
+    .toLowerCase();
+}
+
+function academyMatchesIdentifier(academy, identifier) {
+  const normalizedIdentifier = normalizeIdentifier(identifier);
+
+  if (!normalizedIdentifier) {
+    return false;
+  }
+
+  const candidates = [
+    academy.id,
+    academy.slug,
+    academy.externalId,
+    ...(Array.isArray(academy.aliases) ? academy.aliases : [])
+  ]
+    .filter(Boolean)
+    .map(normalizeIdentifier);
+
+  return candidates.includes(normalizedIdentifier);
+}
+
+export async function getAcademyByIdentifier(identifier) {
   const academies = await loadAcademies();
 
-  return academies.find((academy) => academy.id === academyId) ?? null;
+  return academies.find((academy) => academyMatchesIdentifier(academy, identifier)) ?? null;
 }
 
 export async function listAcademies() {

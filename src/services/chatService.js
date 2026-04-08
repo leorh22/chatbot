@@ -1,4 +1,4 @@
-import { getAcademyById } from "../data/academyRepository.js";
+import { getAcademyByIdentifier } from "../data/academyRepository.js";
 import { buildSystemPrompt } from "./promptBuilder.js";
 import { generateAcademyAnswer } from "./openaiService.js";
 
@@ -34,7 +34,7 @@ export async function chatWithAcademy({ academyId, messages }) {
     throw new Error("Debes enviar al menos un mensaje.");
   }
 
-  const academy = await getAcademyById(academyId);
+  const academy = await getAcademyByIdentifier(academyId);
 
   if (!academy) {
     throw new Error("No se encontro la academia.");
@@ -47,6 +47,8 @@ export async function chatWithAcademy({ academyId, messages }) {
 
   return {
     academyId: academy.id,
+    academySlug: academy.slug ?? academy.id,
+    academyExternalId: academy.externalId ?? null,
     academyName: academy.name,
     answer
   };

@@ -1,6 +1,12 @@
 [
   {
     "id": "ritmo-libre",
+    "slug": "markflow",
+    "externalId": "c9143239-ca11-4312-bd1a-986d8105622c",
+    "aliases": [
+      "markflow",
+      "c9143239-ca11-4312-bd1a-986d8105622c"
+    ],
     "name": "Academia Ritmo Libre",
     "city": "Ciudad de Mexico",
     "contact": {
@@ -34,6 +40,9 @@
   },
   {
     "id": "urban-beat",
+    "slug": "urban-beat",
+    "externalId": null,
+    "aliases": [],
     "name": "Urban Beat Studio",
     "city": "Guadalajara",
     "contact": {

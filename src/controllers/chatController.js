@@ -70,6 +70,8 @@ export async function chatController(req, res) {
 
     return res.json({
       academyId: response.academyId,
+      academySlug: response.academySlug,
+      academyExternalId: response.academyExternalId,
       academyName: response.academyName,
       answer: response.answer
     });

@@ -96,6 +96,8 @@ Ejemplo de body:
 }
 ```
 
+`academyId` puede ser cualquiera de los identificadores configurados para la academia, por ejemplo el ID interno, un `slug`, un UUID externo o un alias.
+
 Tambien puedes enviar historial:
 
 ```json
